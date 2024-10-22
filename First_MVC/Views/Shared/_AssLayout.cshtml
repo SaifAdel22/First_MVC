@@ -3,39 +3,43 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>One Page Wonder - Start Bootstrap Template</title>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" /> <!-- Ensure proper path -->
+    <meta name="description" content="College System" />
+    <meta name="author" content="Your Name" />
+    <title>@ViewData["Title"] - College System</title>
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" /> <!-- Ensure correct path to favicon -->
     <!-- Font Awesome icons (free version) -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+
     <!-- Core theme CSS (includes Bootstrap) -->
-    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
-            <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">College System</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a asp-action="Index" asp-controller="Course" class="nav-link">Course</a></li>
+
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <h5 class="nav-item" style="color:aliceblue">Welcome @User.Identity.Name</h5>
+                        <li class="nav-item"><span class="nav-link">Welcome, @User.Identity.Name</span></li>
                         <li class="nav-item"><a asp-action="Index" asp-controller="Employee" class="nav-link">Employee</a></li>
                         <li class="nav-item"><a asp-action="Index" asp-controller="Department" class="nav-link">Department</a></li>
                         <li class="nav-item"><a asp-action="SignOut" asp-controller="Account" class="nav-link">Sign Out</a></li>
+
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item"><a asp-action="AddRole" asp-controller="Role" class="nav-link">AddRole</a></li>
+                            <li class="nav-item"><a asp-action="AddRole" asp-controller="Role" class="nav-link">Add Role</a></li>
                         }
                     }
                     else
@@ -44,7 +48,7 @@
                         <li class="nav-item"><a asp-action="LogIn" asp-controller="Account" class="nav-link">Log In</a></li>
                     }
                     <li class="nav-item"><a asp-action="Index" asp-controller="Trainee" class="nav-link">Trainee</a></li>
-                    <li class="nav-item"><a asp-action="Index" asp-controller="CrsResult" class="nav-link">CrsResult</a></li>
+                    <li class="nav-item"><a asp-action="Index" asp-controller="CrsResult" class="nav-link">Course Results</a></li>
                 </ul>
             </div>
         </div>
@@ -54,8 +58,8 @@
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container px-5">
-                <h1 class="masthead-heading mb-0">One Page Wonder</h1>
-                <h2 class="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
+                <h1 class="masthead-heading mb-0">College System</h1>
+                <h2 class="masthead-subheading mb-0">Your Future Starts Here</h2>
                 <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Learn More</a>
             </div>
         </div>
@@ -65,61 +69,62 @@
         <div class="bg-circle-4 bg-circle"></div>
     </header>
 
+    <!-- Render Body -->
     <main class="container">
-        @RenderBody() <!-- This renders child views' content -->
+        @RenderBody() <!-- Child views' content will be inserted here -->
     </main>
 
-    <!-- Content section 1 -->
+    <!-- Content Section 1 -->
     <section id="scroll">
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-6 order-lg-2">
                     <div class="p-5">
-                        <img class="img-fluid rounded-circle" src="//assets/img/01.jpg" alt="Description of image 1" />
+                        <img class="img-fluid rounded-circle" src="~/assets/img/c1.jpg" alt="Educational Programs" />
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="p-5">
-                        <h2 class="display-4">For those about to rock...</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                        <h2 class="display-4">Explore Our Programs</h2>
+                        <p>Our diverse academic offerings allow students to pursue their passions and gain hands-on experience in a variety of fields.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Content section 2 -->
+    <!-- Content Section 2 -->
     <section>
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-6">
                     <div class="p-5">
-                        <img class="img-fluid rounded-circle" src="//assets/img/02.jpg" alt="Description of image 2" />
+                        <img class="img-fluid rounded-circle" src="~/assets/img/c2.jpg" alt="Student Life" />
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="p-5">
-                        <h2 class="display-4">We salute you!</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                        <h2 class="display-4">Engage in Student Life</h2>
+                        <p>Join a vibrant campus community where you'll participate in extracurricular activities, clubs, and societies that enrich your academic experience.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Content section 3 -->
+    <!-- Content Section 3 -->
     <section>
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-6 order-lg-2">
                     <div class="p-5">
-                        <img class="img-fluid rounded-circle" src="//assets/img/03.jpg" alt="Description of image 3" />
+                        <img class="img-fluid rounded-circle" src="~/assets/img/c3.jpg" alt="Career Opportunities" />
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="p-5">
-                        <h2 class="display-4">Let there be rock!</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                        <h2 class="display-4">Prepare for Your Career</h2>
+                        <p>Our college system ensures that you are well-equipped for success in your chosen field with career guidance and internship opportunities.</p>
                     </div>
                 </div>
             </div>
@@ -129,14 +134,17 @@
     <!-- Footer -->
     <footer class="py-5 bg-black">
         <div class="container px-5">
-            <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2023</p>
+            <p class="m-0 text-center text-white small">Copyright &copy; College System @DateTime.Now.Year</p>
         </div>
     </footer>
 
     <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Core theme JS -->
-    <script src="/js/scripts.js"></script>
+    <script src="~/js/scripts.js"></script>
+
+    <!-- jQuery and validation libraries -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
