@@ -1,0 +1,11 @@
+﻿@inject First_MVC.Repository.IDepartmentRepository deptRepo 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AssLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<h3>Id From Controller @ViewBag.Id</h3>
+<h3>Id From View @deptRepo.Id</h3>
+

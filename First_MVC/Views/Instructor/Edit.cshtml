@@ -1,0 +1,70 @@
+﻿@model InstructorWithCourseAndDepartment
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<form method="post" action="/Instructor/SaveEdit/@Model.Id">
+    <div>
+        <label>Name</label>
+        <input id="Name" name="Name" type="text" value="@Model.Name" class="form-check form-control" />
+    </div>
+    <div>
+        <label>Address</label>
+        <input id="Address" name="Address" type="text" value="@Model.Address" class="form-check form-control" />
+
+    </div>
+    <div>
+        <label>salary</label>
+        <input id="salary" name="salary" type="number" value="@Model.Salary" class="form-check form-control" />
+    </div>
+
+    <div>
+        <label>ImageURL</label>
+        <input id="ImageURL" name="ImageURL" type="text" value="@Model.ImageURL" class="form-check form-control" />
+    </div>
+    <div>
+        <label>CourseId</label>
+
+        <select id="CourseId" name="CourseId">
+            @foreach (var item in Model.Courses)
+            {
+                if (Model.CourseId == item.Id)
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+
+
+    </div>
+    <div>
+        <label>DepartmentId</label>
+
+        <select id="DepartmentId" name="DepartmentId">
+            @foreach (var item in Model.Departments)
+            {
+                if (Model.DepartmentId == item.Id)
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+
+                }
+            }
+        </select>
+
+    </div>
+    <div>
+        <input type="submit" value="Edit" class="btn btn-success" />
+    </div>
+
+</form>
+<a href="/Instructor/Index">Back To List</a>
+

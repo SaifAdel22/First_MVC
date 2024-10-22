@@ -1,0 +1,19 @@
+﻿@model List<Student>
+<table class="table table-bordered table-hover">
+@foreach(var item in Model)
+	{
+		<tr>
+			<td>@item.Id</td>
+			<td>@item.Name</td>
+			<td>
+				<img src="/Images/@item.ImageUrl"  style="width:120px"/>
+			</td>
+			<td>
+				<a href="@Url.Action("ShowById", "Student", new { id = item.Id })">
+					Details
+				</a>
+			</td>
+		</tr>
+	}
+
+</table>

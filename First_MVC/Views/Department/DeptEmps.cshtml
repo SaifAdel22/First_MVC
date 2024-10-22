@@ -1,0 +1,37 @@
+﻿@model List<Department>
+
+<h1>DeptEmps</h1>
+<!-- Dropdown for Department selection -->
+<select class="form-control" id="DeptId" name="DeptID" onchange="GetEmp()">
+    <option value="0" disabled selected>---Select Dept---</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>
+
+<!-- Dropdown for Employees under the selected department -->
+<select id="Emps" name="Emps" class="form-control"></select>
+
+<script>
+    function GetEmp() {
+        // Correctly getting the value of the selected department
+        var deptID = document.getElementById("DeptId").value;
+        var empElement = document.getElementById("Emps");
+        empElement.innerHTML = ""; // Clear previous options
+
+        console.log(deptID); // Debugging: check if correct department ID is fetched
+
+        // Ajax call to fetch employees by department ID
+        $.ajax({
+            url: "/Department/GetEmpsByDEptId?deptId=" + deptID, // Ensure the URL is correct
+            success: function (result) {
+                console.log(result); // Debugging: log the returned employee data
+                // Populate the employees dropdown
+                for (let emp of result) {
+                    empElement.innerHTML += "<option value='" + emp.id + "'>" + emp.name + "</option>";
+                }
+            }
+        });
+    }
+</script>

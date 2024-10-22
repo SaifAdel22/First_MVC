@@ -1,0 +1,52 @@
+﻿@model InstructorWithCourseAndDepartment
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+<form method="post" action="/Instructor/SaveAdd">
+    <div>
+        <label>Name</label>
+        <input name="Name" id="Name" type="text" value="@Model?.Name" class="form form-control"
+    </div>
+    <div>
+        <label>Address</label>
+        <input name="Address" id="Address" type="text" value="@Model?.Address" class="form form-control"
+    </div>
+   
+     <div>
+        <label>Salary</label>
+        <input name="Salary" id="Salary" type="number" value="@Model?.Salary" class="form form-control"
+    </div>
+    <div>
+        <label>ImageURL</label>
+        <input name="ImageURL" id="ImageURL" type="text" value="@Model?.ImageURL" class="form form-control"
+    </div>
+    
+    <div>
+        <label>CourseId</label>
+        <select id="CouseId" name="CourseId">
+            @foreach (var item in Model.Courses)
+            {
+                   <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+
+    </div>
+    <div>
+        <label>DepartmentId</label>
+        <select id="DepartmentId" name="DepartmentId">
+            @foreach (var item in Model.Departments)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+
+    </div>
+    <div>
+        <input type="submit" value="Add" class="btn btn-success"/>
+    </div>
+
+</form>
+<a href="/Instructor/index">Back To List</a>
+

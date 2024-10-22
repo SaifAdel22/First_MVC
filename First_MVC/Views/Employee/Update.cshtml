@@ -1,0 +1,49 @@
+﻿@model EmployeeWithDeptList
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+<form method="post" asp-action="SaveUpdate" asp-controller="Employee" asp-route-id="@Model.Id">
+    <div>
+        <label asp-for="Name"></label>
+        <input class="form form-control" asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Address"></label>
+        <input class="form form-control" asp-for="Address" />
+    </div>
+    <div>
+        <label asp-for="salary"></label>
+        <input class="form form-control" asp-for="salary" />
+    </div>
+    <div>
+        <label asp-for="JobTitle"></label>
+        <input class="form form-control" asp-for="JobTitle" />
+    </div>
+    <div>
+        <label asp-for="ImageURL"></label>
+        <input class="form form-control" asp-for="ImageURL" />
+    </div>
+    <div>
+        <label asp-for="DepartmentId"></label>
+        <select id="DepartmentId" name="DepartmentId" class="form form-control">
+            @foreach (var item in Model.DepartmentList)
+            {
+                if (Model.DepartmentId == item.Id)
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Update" class="btn btn-success" />
+    </div>
+</form>
+<a asp-action="Index" asp-controller="Employee">Back To List</a>
+<a asp-action="Details" asp-controller="Employee" asp-route-id="@Model.Id">Details</a>

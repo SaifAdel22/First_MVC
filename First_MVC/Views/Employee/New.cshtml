@@ -1,0 +1,48 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "New";
+    SelectList deptoptions = new SelectList(ViewBag.DeptList, "Id", "Name");
+}
+    
+
+<h1>New</h1>
+<form method="post" asp-action="SaveNew" asp-controller="Employee">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span> <!-- Corrected this line -->
+    </div>
+    <div>
+        <label asp-for="JobTitle"></label>
+        <input asp-for="JobTitle" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="salary"></label>
+        <input asp-for="salary" class="form-control" />
+        <span asp-validation-for="salary" class="text-danger"></span> <!-- Added validation -->
+    </div>
+    <div>
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="DepartmentId"></label>
+        <select class="form-control" asp-items="deptoptions" asp-for="DepartmentId">
+            <option value="0" disabled selected>---Select Dept---</option>
+        </select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span> <!-- Added validation -->
+    </div>
+    <div>
+        <label asp-for="ImageURL"></label>
+        <input asp-for="ImageURL" class="form-control" />
+        <span asp-validation-for="ImageURL" class="text-danger"></span> <!-- Added validation -->
+    </div>
+    <div>
+        <input type="submit" value="Add" class="btn btn-success" />
+    </div>
+</form>
+@* <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script> *@
+<a asp-action="Index" asp-controller="Employee">Back To List</a>

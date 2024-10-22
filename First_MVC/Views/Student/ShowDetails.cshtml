@@ -1,0 +1,11 @@
+﻿@model Student
+<h1>
+	@Model.Name
+</h1>
+<h2>
+	@Model.Id
+</h2>
+<img src="/Images/@Model.ImageUrl" style="width : 120px" />
+<a href="@Url.Action("ShowAll", "Student")">
+	Back TO All
+</a>

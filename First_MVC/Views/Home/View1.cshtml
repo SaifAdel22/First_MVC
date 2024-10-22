@@ -1,0 +1,36 @@
+﻿<h1>Hello World From View1</h1>
+
+<style>
+	h1 {
+		color: darkred;
+	}
+</style>
+
+<script>
+	console.log("Saif");
+</script>
+
+@{
+	int x = 10;
+	int y = x + 10;
+}
+
+@if (x > y)
+{
+	<h2>x is greater than y</h2>
+}
+else
+{
+	<h2>x = @x is less than y = @y</h2>
+}
+
+
+@if (y==20)
+{
+	<h4>y = @y</h4>
+}
+
+@for (int i = 0; i < 5; i++)
+{
+	<li>@i</li>
+}

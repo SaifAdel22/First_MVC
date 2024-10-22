@@ -1,0 +1,73 @@
+﻿@model IEnumerable<First_MVC.Models.Entity.Trainee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AssLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div id="div1" style="border:2px solid blue"></div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <img src="/Images/@item.ImageURL" style="width:180px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.ManagerName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Result" asp-route-id="@item.Id">Result</a> |
+               <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a@*  href="/Trainee/TraiCard/@item.Id" *@ onclick="GetTraiData(@item.Id)">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    function GetTraiData(TraiId) {
+        $.ajax({
+            url: "/Trainee/TraiCard/" + TraiId, success: function (result) {
+                console.log(result);
+
+                $("#div1").html(result);
+            }
+        }); 
+    }
+</script>

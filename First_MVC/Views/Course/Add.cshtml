@@ -1,0 +1,54 @@
+﻿@model First_MVC.Models.Entity.Course
+
+@{
+    ViewData["Title"] = "Add";
+    SelectList deptoptions = new SelectList(ViewBag.DeptList, "Id", "Name");
+}
+
+<h1>SaveAdd</h1>
+
+<h4>Course</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="SaveAdd">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Degree" class="control-label"></label>
+                <input asp-for="Degree" class="form-control" />
+                <span asp-validation-for="Degree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinDegree" class="control-label"></label>
+                <input asp-for="MinDegree" class="form-control" />
+                <span asp-validation-for="MinDegree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hours" class="control-label"></label>
+                <input asp-for="Hours" class="form-control" />
+                <span asp-validation-for="Hours" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="DepartmentId"></label>
+                <select class=" form-check form-control"
+                        asp-items="deptoptions" asp-for="DepartmentId">
+                    <option value="0">---Select Dept---</option>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
